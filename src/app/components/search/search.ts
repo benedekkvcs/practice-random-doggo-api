@@ -10,19 +10,15 @@ import { DogService } from '../../services/dog';
 })
 
 export class Search {
-
   dogImageUrl?: string;
-  dogImageSuccess?: string;
-  showFavouriteButton: boolean = false;
+  dogImageSuccess?: boolean = false;
 
   constructor(private dogService: DogService){}
 
   getDogImage(){
     this.dogService.getDog().subscribe(response =>{
       this.dogImageUrl = response.message;
-      this.dogImageSuccess = response.status;
-
-      this.showFavouriteButton = response.status === 'success';
+      this.dogImageSuccess = response.status === 'success';
     } )
   }
 
