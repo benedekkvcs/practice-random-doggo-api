@@ -14,14 +14,30 @@ export class Search {
   dogImageUrl: string = "";
   dogImageSuccess?: boolean = false;
 
-  constructor(private dogService: DogService){}
+  constructor(private dogService: DogService){
+    this.dogImageUrl = this.loadItem("dog");
+    if(this.dogImageUrl != null && this.dataStore.isDeleted()){
+      this.dogImageSuccess = true;
+    }
+  }
   dataStore = inject(FavouriteService)
 
   getDogImage(){
     this.dogService.getDog().subscribe(response =>{
       this.dogImageUrl = response.message;
       this.dogImageSuccess = response.status === 'success';
+      localStorage.setItem("dog", JSON.stringify(this.dogImageUrl))
     } )
+  }
+
+  loadItem(key: string): any {
+    try{
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : null
+    }catch (e) {
+      console.error('Error reading from localStorage', e);
+      return null;
+    }
   }
 
   searchDog(){

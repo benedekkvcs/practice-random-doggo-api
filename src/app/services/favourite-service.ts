@@ -5,14 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class FavouriteService {
   private data: string[] = [];
+  private delete: boolean = false;
 
   constructor(){
-    this.data = this.getItem("dogs");
+    this.data = this.loadItem("dogs");
   }
 
-  getItem(key: string): any {
+  loadItem(key: string): any {
     try {
-      const item = localStorage.getItem("dogs");
+      const item = localStorage.getItem(key);
       return item ? JSON.parse(item) : null;
     } catch (e) {
       console.error('Error reading from localStorage', e);
@@ -29,8 +30,15 @@ export class FavouriteService {
     return [...this.data];
   }
 
+  isDeleted(): boolean{
+    return this.delete;
+  }
+
   removeItem(item: string): void {
     this.data = this.data.filter(i => i !== item);
     localStorage.setItem("dogs", JSON.stringify(this.data));
+    if(JSON.parse(localStorage.getItem("dog") ?? "null") === item){
+      this.delete = true;
+    }
   }
 }
