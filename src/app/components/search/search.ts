@@ -21,22 +21,13 @@ export class Search {
     this.dogService.getDog().subscribe(response =>{
       this.dogImageUrl = response.message;
       this.dogImageSuccess = response.status;
-    } )
-  }
 
-  checkResponseStatus(){
-    if(this.dogImageSuccess == "success")
-    {
-      this.showFavouriteButton = true;
-    }
-    else{
-      this.showFavouriteButton = false;
-    }
+      this.showFavouriteButton = response.status === 'success';
+    } )
   }
 
   searchDog(){
     this.getDogImage();
-    this.checkResponseStatus();
   }
 
   handleButtonClick(event: Event): void {
