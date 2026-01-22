@@ -11,4 +11,9 @@ import { Button } from '../button/button';
 export class Favourites {
     dataStore = inject(FavouriteService);
     dogImages = this.dataStore.getData();
+
+    onDeleteItem(dogUrl: string) {
+        this.dataStore.removeItem(dogUrl);
+        this.dogImages = this.dataStore.getData();
+    }
 }

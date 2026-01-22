@@ -13,4 +13,8 @@ export class FavouriteService {
   getData(): string[]{
     return [...this.data];
   }
+
+  removeItem(item: string): void {
+    this.data = this.data.filter(i => i !== item);
+  }
 }
