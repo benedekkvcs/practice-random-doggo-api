@@ -7,6 +7,7 @@ import { Button } from '../button/button';
   templateUrl: './search.html',
   styleUrl: './search.css',
 })
+
 export class Search {
   handleButtonClick(event: Event): void {
     console.log("click works!")
