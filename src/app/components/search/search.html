@@ -1,5 +1,5 @@
 <div class="box">
 <app-button label="Random dog" (buttonClick)="handleRandomButtonClick($event)"></app-button>
 <img class="dog-image" [src]="dogImageUrl"/>
-@if (dogImageSuccess) {<app-button label="Add to the favourites"></app-button>}
+@if (dogImageSuccess) {<app-button label="Add to the favourites" (buttonClick)="handleFavouriteButtonClick($event)"></app-button>}
 </div>
