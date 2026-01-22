@@ -1,9 +1,11 @@
 .box { 
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
+    
 }
 
 .dog-image {
     max-width: 400px;
+    margin: 20px;
 }
