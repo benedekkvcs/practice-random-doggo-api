@@ -4,10 +4,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class FavouriteService {
-  private data: string[] = []
+  private data: string[] = [];
+
+  constructor(){
+    this.data = this.getItem("dogs");
+  }
+
+  getItem(key: string): any {
+    try {
+      const item = localStorage.getItem("dogs");
+      return item ? JSON.parse(item) : null;
+    } catch (e) {
+      console.error('Error reading from localStorage', e);
+      return null;
+    }
+  }
 
   addData(item: string): void {
     this.data.push(item);
+    localStorage.setItem("dogs", JSON.stringify(this.data));
   }
 
   getData(): string[]{
@@ -16,5 +31,6 @@ export class FavouriteService {
 
   removeItem(item: string): void {
     this.data = this.data.filter(i => i !== item);
+    localStorage.setItem("dogs", JSON.stringify(this.data));
   }
 }
