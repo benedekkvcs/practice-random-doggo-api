@@ -13,6 +13,8 @@ export class Search {
   dogImageUrl?: string;
   dogImageSuccess?: boolean = false;
 
+  dogImages: (string | undefined)[] = [];
+
   constructor(private dogService: DogService){}
 
   getDogImage(){
@@ -26,7 +28,15 @@ export class Search {
     this.getDogImage();
   }
 
-  handleButtonClick(event: Event): void {
+  addImage(){
+    this.dogImages.push(this.dogImageUrl);
+  }
+
+  handleRandomButtonClick(event: Event): void {
     this.searchDog();
+  }
+
+  handleFavouriteButtonClick(event: Event): void {
+    this.addImage();
   }
 } 
