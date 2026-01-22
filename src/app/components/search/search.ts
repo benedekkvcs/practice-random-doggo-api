@@ -12,13 +12,31 @@ import { DogService } from '../../services/dog';
 export class Search {
 
   dogImageUrl?: string;
+  dogImageSuccess?: string;
+  showFavouriteButton: boolean = false;
 
   constructor(private dogService: DogService){}
 
-  searchDog(){
+  getDogImage(){
     this.dogService.getDog().subscribe(response =>{
       this.dogImageUrl = response.message;
+      this.dogImageSuccess = response.status;
     } )
+  }
+
+  checkResponseStatus(){
+    if(this.dogImageSuccess == "success")
+    {
+      this.showFavouriteButton = true;
+    }
+    else{
+      this.showFavouriteButton = false;
+    }
+  }
+
+  searchDog(){
+    this.getDogImage();
+    this.checkResponseStatus();
   }
 
   handleButtonClick(event: Event): void {
