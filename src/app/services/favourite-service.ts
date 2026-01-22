@@ -4,5 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class FavouriteService {
-  
+  private data: string[] = []
+
+  addData(item: string): void {
+    this.data.push(item);
+  }
+
+  getData(): string[]{
+    return [...this.data];
+  }
 }
