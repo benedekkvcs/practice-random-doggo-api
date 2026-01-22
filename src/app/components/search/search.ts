@@ -8,5 +8,7 @@ import { Button } from '../button/button';
   styleUrl: './search.css',
 })
 export class Search {
-
-}
+  handleButtonClick(event: Event): void {
+    console.log("click works!")
+  }
+} 
