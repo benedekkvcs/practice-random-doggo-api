@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Button } from '../button/button';
+import { DogService } from '../../services/dog';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,18 @@ import { Button } from '../button/button';
 })
 
 export class Search {
+
+  dogImageUrl?: string;
+
+  constructor(private dogService: DogService){}
+
+  searchDog(){
+    this.dogService.getDog().subscribe(response =>{
+      this.dogImageUrl = response.message;
+    } )
+  }
+
   handleButtonClick(event: Event): void {
-    console.log("click works!")
+    this.searchDog();
   }
 } 

@@ -11,6 +11,6 @@ export class DogService {
   constructor(private http: HttpClient) {}
 
   getDog(): Observable<any> {
-    return this.http.get('${this.apiUrl}/breeds/image/random');
+    return this.http.get(`${this.apiUrl}/breeds/image/random`);
   }
 }
