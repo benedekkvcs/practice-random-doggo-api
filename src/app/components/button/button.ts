@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './button.css',
 })
 export class Button {
-  onSearch(){
-    console.log('Searching..')
+  @Output() buttonClick = new EventEmitter<Event>
+
+  onClick(event: Event): void {
+    this.buttonClick.emit(event);
   }
 }
