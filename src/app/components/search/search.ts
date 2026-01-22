@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Button } from '../button/button';
 import { DogService } from '../../services/dog';
+import { FavouriteService } from '../../services/favourite-service';
 
 @Component({
   selector: 'app-search',
@@ -10,12 +11,11 @@ import { DogService } from '../../services/dog';
 })
 
 export class Search {
-  dogImageUrl?: string;
+  dogImageUrl: string = "";
   dogImageSuccess?: boolean = false;
 
-  dogImages: (string | undefined)[] = [];
-
   constructor(private dogService: DogService){}
+  dataStore = inject(FavouriteService)
 
   getDogImage(){
     this.dogService.getDog().subscribe(response =>{
@@ -29,7 +29,7 @@ export class Search {
   }
 
   addImage(){
-    this.dogImages.push(this.dogImageUrl);
+    this.dataStore.addData(this.dogImageUrl)
   }
 
   handleRandomButtonClick(event: Event): void {
@@ -38,5 +38,6 @@ export class Search {
 
   handleFavouriteButtonClick(event: Event): void {
     this.addImage();
+    this.dogImageSuccess = false;
   }
 } 

@@ -1,1 +1,14 @@
-<p>favourites works!</p>
+@if(dogImages.length == 0){
+    <p>Meg nincs semmi kedvencnek jelölve</p>
+}
+
+@if(dogImages.length > 0){
+
+@for (dog of dogImages; track dog){
+    <div class="box">
+        <img class="dog-image" [src]="dog"/>
+        <app-button label="Delete"></app-button>
+    </div>
+}
+
+}
