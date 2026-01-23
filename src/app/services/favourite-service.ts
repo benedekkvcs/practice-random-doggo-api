@@ -21,7 +21,7 @@ export class FavouriteService {
     }
   }
 
-  setCurrentImage(url: string) { 
+  setCurrentUrl(url: string) {
     this.currentUrl = url; 
   }
 
@@ -29,16 +29,16 @@ export class FavouriteService {
     return this.favourites.includes(url); 
   }
 
-  addData(item: string): void {
+  addUrl(item: string): void {
     this.favourites.push(item);
     localStorage.setItem("dogs", JSON.stringify(this.favourites));
   }
 
-  getData(): string[]{
+  getUrl(): string[]{
     return [...this.favourites];
   }
 
-  removeItem(url: string): void {
+  removeUrl(url: string): void {
     if (this.favourites.includes(url)) { 
       this.favourites = this.favourites.filter(f => f !== url); } 
     else { 

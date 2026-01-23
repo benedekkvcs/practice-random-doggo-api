@@ -28,13 +28,13 @@ export class Search {
       console.log(response);
       this.dogImageUrl = response.message;
       this.dogImageSuccess = response.status === 'success';
-      this.favouriteService.setCurrentImage(this.dogImageUrl);
+      this.favouriteService.setCurrentUrl(this.dogImageUrl);
     } )
   }
 
   toggleFavourite(){
     if(this.dogImageUrl){
-      this.favouriteService.removeItem(this.dogImageUrl);
+      this.favouriteService.removeUrl(this.dogImageUrl);
     }
   }
   
@@ -47,7 +47,7 @@ export class Search {
   }
 
   addImage(){
-    this.favouriteService.addData(this.dogImageUrl)
+    this.favouriteService.addUrl(this.dogImageUrl)
   }
 
   handleRandomButtonClick(event: Event): void {

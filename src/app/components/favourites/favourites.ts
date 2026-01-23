@@ -10,10 +10,10 @@ import { Button } from '../button/button';
 })
 export class Favourites {
     dataStore = inject(FavouriteService);
-    dogImages = this.dataStore.getData();
+    dogImages = this.dataStore.getUrl();
 
     onDeleteItem(dogUrl: string) {
-        this.dataStore.removeItem(dogUrl);
-        this.dogImages = this.dataStore.getData();
+        this.dataStore.removeUrl(dogUrl);
+        this.dogImages = this.dataStore.getUrl();
     }
 }
