@@ -13,13 +13,12 @@ import { FavouriteService } from '../../services/favourite-service';
 export class Search {
   dogImageUrl: string = "";
   dogImageSuccess?: boolean = false;
-  favouriteStore = inject(FavouriteService)
-
-  constructor(private dogService: DogService){}
+  favouriteService = inject(FavouriteService)
+  dogService = inject(DogService)
 
   ngOnInit(){
-    if (this.favouriteStore.currentImage) { 
-      this.dogImageUrl = this.favouriteStore.currentImage; 
+    if (this.favouriteService.currentImage) { 
+      this.dogImageUrl = this.favouriteService.currentImage; 
       this.dogImageSuccess = true; 
     }
   }
@@ -29,18 +28,18 @@ export class Search {
       console.log(response);
       this.dogImageUrl = response.message;
       this.dogImageSuccess = response.status === 'success';
-      this.favouriteStore.setCurrentImage(this.dogImageUrl);
+      this.favouriteService.setCurrentImage(this.dogImageUrl);
     } )
   }
 
   toggleFavourite(){
     if(this.dogImageUrl){
-      this.favouriteStore.removeItem(this.dogImageUrl);
+      this.favouriteService.removeItem(this.dogImageUrl);
     }
   }
   
   get isFavourite(){
-    return this.dogImageUrl ? this.favouriteStore.isFavourite(this.dogImageUrl) : false;
+    return this.dogImageUrl ? this.favouriteService.isFavourite(this.dogImageUrl) : false;
   }
 
   searchDog(){
@@ -48,7 +47,7 @@ export class Search {
   }
 
   addImage(){
-    this.favouriteStore.addData(this.dogImageUrl)
+    this.favouriteService.addData(this.dogImageUrl)
   }
 
   handleRandomButtonClick(event: Event): void {
