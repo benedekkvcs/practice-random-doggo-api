@@ -34,7 +34,7 @@ export class FavouriteService {
     localStorage.setItem("dogs", JSON.stringify(this.favourites));
   }
 
-  getUrl(): string[]{
+  getUrls(): string[]{
     return [...this.favourites];
   }
 

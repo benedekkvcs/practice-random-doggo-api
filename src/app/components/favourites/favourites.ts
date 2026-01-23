@@ -9,11 +9,11 @@ import { Button } from '../button/button';
   styleUrl: './favourites.css',
 })
 export class Favourites {
-    dataStore = inject(FavouriteService);
-    dogImages = this.dataStore.getUrl();
+    favouriteService = inject(FavouriteService);
+    dogUrls= this.favouriteService.getUrls();
 
     onDeleteItem(dogUrl: string) {
-        this.dataStore.removeUrl(dogUrl);
-        this.dogImages = this.dataStore.getUrl();
+        this.favouriteService.removeUrl(dogUrl);
+        this.dogUrls = this.favouriteService.getUrls();
     }
 }
