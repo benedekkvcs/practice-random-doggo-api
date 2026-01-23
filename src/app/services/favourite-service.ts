@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class FavouriteService {
   private data: string[] = [];
-  private delete: boolean = false;
 
   constructor(){
     this.data = this.loadItem("dogs");
@@ -30,15 +29,8 @@ export class FavouriteService {
     return [...this.data];
   }
 
-  isDeleted(): boolean{
-    return this.delete;
-  }
-
   removeItem(item: string): void {
     this.data = this.data.filter(i => i !== item);
     localStorage.setItem("dogs", JSON.stringify(this.data));
-    if(JSON.parse(localStorage.getItem("dog") ?? "null") === item){
-      this.delete = true;
-    }
   }
 }
