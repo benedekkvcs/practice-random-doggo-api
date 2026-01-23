@@ -4,10 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class FavouriteService {
-  private data: string[] = [];
+  private favourites: string[] = [];
+  currentImage: string | null = null;
 
   constructor(){
-    this.data = this.loadItem("dogs");
+    this.favourites = this.loadItem("dogs");
   }
 
   loadItem(key: string): any {
@@ -20,17 +21,29 @@ export class FavouriteService {
     }
   }
 
+  setCurrentImage(url: string) { 
+    this.currentImage = url; 
+  }
+
+  isFavourite(url: string): boolean { 
+    return this.favourites.includes(url); 
+  }
+
   addData(item: string): void {
-    this.data.push(item);
-    localStorage.setItem("dogs", JSON.stringify(this.data));
+    this.favourites.push(item);
+    localStorage.setItem("dogs", JSON.stringify(this.favourites));
   }
 
   getData(): string[]{
-    return [...this.data];
+    return [...this.favourites];
   }
 
-  removeItem(item: string): void {
-    this.data = this.data.filter(i => i !== item);
-    localStorage.setItem("dogs", JSON.stringify(this.data));
+  removeItem(url: string): void {
+    if (this.favourites.includes(url)) { 
+      this.favourites = this.favourites.filter(f => f !== url); } 
+    else { 
+        this.favourites.push(url); 
+    } 
+    localStorage.setItem("dogs", JSON.stringify(this.favourites));
   }
 }
