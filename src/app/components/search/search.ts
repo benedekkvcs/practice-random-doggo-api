@@ -26,6 +26,7 @@ export class Search {
   
   getDogImage(){
     this.dogService.getDog().subscribe(response =>{
+      console.log(response);
       this.dogImageUrl = response.message;
       this.dogImageSuccess = response.status === 'success';
       this.favouriteStore.setCurrentImage(this.dogImageUrl);

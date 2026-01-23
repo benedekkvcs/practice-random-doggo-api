@@ -19,3 +19,8 @@
     font-weight: 550;
     font-size: 1.2em;
 } 
+
+.navbar-links li.active-link { 
+    background-color: #ffe135 !important; 
+}
+
