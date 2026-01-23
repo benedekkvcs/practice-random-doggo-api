@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class FavouriteService {
   private favourites: string[] = [];
-  currentImage: string | null = null;
+  currentUrl: string | null = null;
 
   constructor(){
     this.favourites = this.loadItem("dogs");
@@ -22,7 +22,7 @@ export class FavouriteService {
   }
 
   setCurrentImage(url: string) { 
-    this.currentImage = url; 
+    this.currentUrl = url; 
   }
 
   isFavourite(url: string): boolean { 
