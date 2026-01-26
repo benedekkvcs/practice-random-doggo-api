@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Button } from '../button/button';
 import { DogService } from '../../services/dog-service';
 import { FavouriteService } from '../../services/favourite-service';
@@ -10,7 +10,7 @@ import { FavouriteService } from '../../services/favourite-service';
   styleUrl: './search.css',
 })
 
-export class Search {
+export class Search implements OnInit {
   dogImageUrl: string = "";
   dogImageSuccess: boolean = false;
   favouriteService = inject(FavouriteService)
