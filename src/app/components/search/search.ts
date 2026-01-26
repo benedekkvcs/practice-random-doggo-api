@@ -46,11 +46,11 @@ export class Search {
     this.favouriteService.addUrl(this.dogImageUrl)
   }
 
-  handleRandomButtonClick(event: Event): void {
+  handleRandomButtonClick(): void {
     this.getDogImage();
   }
 
-  handleFavouriteButtonClick(event: Event): void {
+  handleFavouriteButtonClick(): void {
     this.toggleFavourite();
   }
 } 

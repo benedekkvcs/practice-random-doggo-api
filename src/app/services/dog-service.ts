@@ -12,7 +12,6 @@ export interface DogResponse {
 })
 export class DogService {
   private apiUrl = 'https://dog.ceo/api';
-
   private http = inject(HttpClient);
 
   getDog(): Observable<DogResponse> {
