@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Button } from '../button/button';
-import { DogService } from '../../services/dog';
+import { DogService } from '../../services/dog-service';
 import { FavouriteService } from '../../services/favourite-service';
 
 @Component({
@@ -42,16 +42,12 @@ export class Search {
     return this.dogImageUrl ? this.favouriteService.isFavourite(this.dogImageUrl) : false;
   }
 
-  searchDog(){
-    this.getDogImage();
-  }
-
   addImage(){
     this.favouriteService.addUrl(this.dogImageUrl)
   }
 
   handleRandomButtonClick(event: Event): void {
-    this.searchDog();
+    this.getDogImage();
   }
 
   handleFavouriteButtonClick(event: Event): void {

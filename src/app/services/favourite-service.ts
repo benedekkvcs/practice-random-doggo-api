@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { StorageService } from './storage-service';
 
 @Injectable({
   providedIn: 'root',
@@ -6,19 +7,10 @@ import { Injectable } from '@angular/core';
 export class FavouriteService {
   private favourites: string[] = [];
   currentUrl: string | null = null;
+  storageService = inject(StorageService);
 
   constructor(){
-    this.favourites = this.loadItem("dogs");
-  }
-
-  loadItem(key: string): any {
-    try {
-      const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : [];
-    } catch (e) {
-      console.error('Error reading from localStorage', e);
-      return [];
-    }
+    this.favourites = this.storageService.loadItem("dogs");
   }
 
   setCurrentUrl(url: string) {
@@ -31,7 +23,7 @@ export class FavouriteService {
 
   addUrl(item: string): void {
     this.favourites.push(item);
-    localStorage.setItem("dogs", JSON.stringify(this.favourites));
+    this.storageService.setItems("dogs", this.favourites);
   }
 
   getUrls(): string[]{
@@ -44,6 +36,6 @@ export class FavouriteService {
     else { 
         this.favourites.push(url); 
     } 
-    localStorage.setItem("dogs", JSON.stringify(this.favourites));
+    this.storageService.setItems("dogs", this.favourites)
   }
 }
