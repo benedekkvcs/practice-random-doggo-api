@@ -34,7 +34,7 @@ export class Search {
 
   toggleFavourite(){
     if(this.dogImageUrl){
-      this.favouriteService.removeUrl(this.dogImageUrl);
+      this.favouriteService.toggleUrlInFavourites(this.dogImageUrl);
     }
   }
   

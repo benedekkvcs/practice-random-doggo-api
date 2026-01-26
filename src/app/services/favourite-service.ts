@@ -35,7 +35,7 @@ export class FavouriteService {
     return this.currentUrl ? this.currentUrl : "";
   }
 
-  removeUrl(url: string): void {
+  toggleUrlInFavourites(url: string): void {
     if (this.favourites.includes(url)) { 
       this.favourites = this.favourites.filter(f => f !== url); } 
     else { 
