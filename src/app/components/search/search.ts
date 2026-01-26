@@ -17,9 +17,9 @@ export class Search {
   dogService = inject(DogService)
 
   ngOnInit(){
-    if (this.favouriteService.currentUrl) { 
-      this.dogImageUrl = this.favouriteService.currentUrl; 
-      this.dogImageSuccess = true; 
+    if (this.favouriteService.getCurrentUrl()) { 
+      this.dogImageUrl = this.favouriteService.getCurrentUrl(); 
+      this.dogImageSuccess = true;
     }
   }
   

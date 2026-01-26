@@ -6,11 +6,14 @@ import { StorageService } from './storage-service';
 })
 export class FavouriteService {
   private favourites: string[] = [];
-  currentUrl: string | null = null;
+  private currentUrl: string | null = null;
   storageService = inject(StorageService);
 
   constructor(){
     this.favourites = this.storageService.loadItem("dogs");
+    let example = this.storageService.loadItem("dogs");
+    example.url = '';
+    example.HasDragon = true;
   }
 
   setCurrentUrl(url: string) {
@@ -28,6 +31,10 @@ export class FavouriteService {
 
   getUrls(): string[]{
     return [...this.favourites];
+  }
+
+  getCurrentUrl(): string {
+    return this.currentUrl ? this.currentUrl : false;
   }
 
   removeUrl(url: string): void {
