@@ -1,5 +1,7 @@
 <div class="box">
-<app-button label="Random dog" (buttonClick)="handleRandomButtonClick()"></app-button>
-<img class="dog-image" [src]="dogImageUrl"/>
-@if (dogImageSuccess) {<app-button label="{{ isFavourite ? '★ Remove Favourite' : '☆ Add Favourite' }}" (buttonClick)="handleFavouriteButtonClick()"></app-button>}
+    <app-button label="Random dog" (buttonClick)="handleRandomButtonClick()"></app-button>
+    <img class="dog-image" [src]="dogImageUrl"/>
+    @if (dogImageSuccess) {
+        <app-button label="{{ isFavourite ? '★ Remove Favourite' : '☆ Add Favourite' }}" (buttonClick)="handleFavouriteButtonClick()"></app-button>
+    }
 </div>
