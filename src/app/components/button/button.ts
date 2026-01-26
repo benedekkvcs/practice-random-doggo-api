@@ -7,7 +7,7 @@ import { Component, EventEmitter, input, Input, output, Output } from '@angular/
   styleUrl: './button.css',
 })
 export class Button {
-  label = input('');
+  label = input.required<string>();
   buttonClick = output<Event>();
 
   onClick(event: Event): void {
