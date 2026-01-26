@@ -11,9 +11,6 @@ export class FavouriteService {
 
   constructor(){
     this.favourites = this.storageService.loadItem("dogs");
-    let example = this.storageService.loadItem("dogs");
-    example.url = '';
-    example.HasDragon = true;
   }
 
   setCurrentUrl(url: string) {
@@ -34,7 +31,7 @@ export class FavouriteService {
   }
 
   getCurrentUrl(): string {
-    return this.currentUrl ? this.currentUrl : false;
+    return this.currentUrl ? this.currentUrl : "";
   }
 
   removeUrl(url: string): void {
