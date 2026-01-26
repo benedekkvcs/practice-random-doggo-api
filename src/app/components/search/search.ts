@@ -12,7 +12,7 @@ import { FavouriteService } from '../../services/favourite-service';
 
 export class Search {
   dogImageUrl: string = "";
-  dogImageSuccess?: boolean = false;
+  dogImageSuccess: boolean = false;
   favouriteService = inject(FavouriteService)
   dogService = inject(DogService)
 
