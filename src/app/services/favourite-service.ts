@@ -7,10 +7,11 @@ import { StorageService } from './storage-service';
 export class FavouriteService {
   private favourites: string[] = [];
   private currentUrl: string | null = null;
+  private favouritesLocalStorage: string = "dogs"
   storageService = inject(StorageService);
 
   constructor(){
-    this.favourites = this.storageService.loadItem("dogs");
+    this.favourites = this.storageService.loadItem(this.favouritesLocalStorage);
   }
 
   setCurrentUrl(url: string) {
@@ -23,7 +24,7 @@ export class FavouriteService {
 
   addUrl(item: string): void {
     this.favourites.push(item);
-    this.storageService.setItems("dogs", this.favourites);
+    this.storageService.setItems(this.favouritesLocalStorage, this.favourites);
   }
 
   getUrls(): string[]{
@@ -40,6 +41,6 @@ export class FavouriteService {
     else { 
         this.favourites.push(url); 
     } 
-    this.storageService.setItems("dogs", this.favourites)
+    this.storageService.setItems(this.favouritesLocalStorage, this.favourites)
   }
 }
