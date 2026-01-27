@@ -23,26 +23,20 @@ export class Search implements OnInit {
     }
   }
   
-  getDogImage(){
+  getDogImage(): void {
     this.dogService.getDog().subscribe(response =>{
       console.log(response);
+
       this.dogImageUrl = response.message;
       this.dogImageSuccess = response.status === 'success';
+
       this.favouriteService.setCurrentUrl(this.dogImageUrl);
     } )
   }
 
-  toggleFavourite(){
+  toggleFavourite(): void {
     if(this.dogImageUrl){
-      this.favouriteService.toggleUrlInFavourites(this.dogImageUrl);
+      this.favouriteService.toggleUrlInFavouriteUrls(this.dogImageUrl);
     }
-  }
-
-  handleRandomButtonClick(): void {
-    this.getDogImage();
-  }
-
-  handleFavouriteButtonClick(): void {
-    this.toggleFavourite();
   }
 } 

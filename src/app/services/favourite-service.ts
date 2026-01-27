@@ -5,13 +5,14 @@ import { StorageService } from './storage-service';
   providedIn: 'root',
 })
 export class FavouriteService {
-  private favourites: string[] = [];
+  private favouriteUrls: string[] = [];
   private currentUrl: string | null = null;
-  private favouritesLocalStorage: string = "dogs"
+  
+  private favouriteUrlsLocalStorage: string = "dogs"
   private storageService = inject(StorageService);
 
   constructor(){
-    this.favourites = this.storageService.loadItem(this.favouritesLocalStorage);
+    this.favouriteUrls = this.storageService.loadItem(this.favouriteUrlsLocalStorage);
   }
 
   setCurrentUrl(url: string) {
@@ -19,23 +20,23 @@ export class FavouriteService {
   }
 
   isFavourite(url: string): boolean { 
-    return this.favourites.includes(url); 
+    return this.favouriteUrls.includes(url); 
   }
 
   getUrls(): string[]{
-    return [...this.favourites];
+    return [...this.favouriteUrls];
   }
 
   getCurrentUrl(): string {
     return this.currentUrl ? this.currentUrl : "";
   }
 
-  toggleUrlInFavourites(url: string): void {
-    if (this.favourites.includes(url)) { 
-      this.favourites = this.favourites.filter(f => f !== url); } 
+  toggleUrlInFavouriteUrls(url: string): void {
+    if (this.favouriteUrls.includes(url)) { 
+      this.favouriteUrls = this.favouriteUrls.filter(f => f !== url); } 
     else { 
-        this.favourites.push(url); 
+        this.favouriteUrls.push(url); 
     } 
-    this.storageService.setItems(this.favouritesLocalStorage, this.favourites)
+    this.storageService.setItems(this.favouriteUrlsLocalStorage, this.favouriteUrls)
   }
 }

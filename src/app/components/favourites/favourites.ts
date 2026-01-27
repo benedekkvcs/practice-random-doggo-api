@@ -13,7 +13,7 @@ export class Favourites {
     dogUrls= this.favouriteService.getUrls();
 
     onDeleteItem(dogUrl: string) {
-        this.favouriteService.toggleUrlInFavourites(dogUrl);
+        this.favouriteService.toggleUrlInFavouriteUrls(dogUrl);
         this.dogUrls = this.favouriteService.getUrls();
     }
 }
