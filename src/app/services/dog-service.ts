@@ -1,11 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DogResponse } from '../models/dogresponse';
 
-export interface DogResponse {
-  message: string;
-  status: string;
-}
+
 
 @Injectable({
   providedIn: 'root',
