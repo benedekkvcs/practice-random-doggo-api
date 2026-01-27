@@ -38,10 +38,6 @@ export class Search implements OnInit {
     }
   }
 
-  // addImage(){
-  //   this.favouriteService.addUrl(this.dogImageUrl)
-  // }
-
   handleRandomButtonClick(): void {
     this.getDogImage();
   }

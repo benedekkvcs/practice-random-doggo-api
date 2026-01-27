@@ -22,11 +22,6 @@ export class FavouriteService {
     return this.favourites.includes(url); 
   }
 
-  addUrl(item: string): void {
-    this.favourites.push(item);
-    this.storageService.setItems(this.favouritesLocalStorage, this.favourites);
-  }
-
   getUrls(): string[]{
     return [...this.favourites];
   }
