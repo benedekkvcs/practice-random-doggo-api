@@ -2,7 +2,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;;
+    justify-content: center;
+}
+
+.action-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-box * {
+    padding: 8px;
 }
 
 .dog-image {

@@ -7,8 +7,11 @@
 @for (dog of dogUrls; track dog){
     <div class="box">
         <img class="dog-image" [src]="dog"/>
-        <app-button label="Delete" (buttonClick)="onDeleteItem(dog)"></app-button>
-        <app-button label="Delete"></app-button>
+        <div class="action-box">
+            <app-button label="↑"></app-button>
+            <app-button label="↓"></app-button>
+            <app-button label="Delete" (buttonClick)="onDeleteItem(dog)"></app-button>
+        </div>
     </div>
 }
 
