@@ -16,4 +16,8 @@ export class Favourites {
         this.favouriteService.toggleUrlInFavouriteUrls(dogUrl);
         this.dogUrls = this.favouriteService.getUrls();
     }
+
+    onMoving(dogUrl: string){
+        console.log(dogUrl);
+    }
 }

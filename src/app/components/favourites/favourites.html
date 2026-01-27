@@ -8,7 +8,7 @@
     <div class="box">
         <img class="dog-image" [src]="dog"/>
         <div class="action-box">
-            <app-button label="↑"></app-button>
+            <app-button label="↑" (buttonClick)="onMoving(dog)"></app-button>
             <app-button label="↓"></app-button>
             <app-button label="Delete" (buttonClick)="onDeleteItem(dog)"></app-button>
         </div>
