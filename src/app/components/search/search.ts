@@ -11,10 +11,10 @@ import { FavouriteService } from '../../services/favourite-service';
 })
 
 export class Search implements OnInit {
-  dogImageUrl: string = "";
-  dogImageSuccess: boolean = false;
-  favouriteService = inject(FavouriteService);
-  dogService = inject(DogService);
+  private dogImageUrl: string = "";
+  private dogImageSuccess: boolean = false;
+  private favouriteService = inject(FavouriteService);
+  private dogService = inject(DogService);
 
   ngOnInit(){
     if (this.favouriteService.getCurrentUrl()) { 
