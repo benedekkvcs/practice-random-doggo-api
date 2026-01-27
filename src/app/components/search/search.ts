@@ -13,8 +13,8 @@ import { FavouriteService } from '../../services/favourite-service';
 export class Search implements OnInit {
   dogImageUrl: string = "";
   dogImageSuccess: boolean = false;
-  favouriteService = inject(FavouriteService)
-  dogService = inject(DogService)
+  favouriteService = inject(FavouriteService);
+  dogService = inject(DogService);
 
   ngOnInit(){
     if (this.favouriteService.getCurrentUrl()) { 
@@ -37,14 +37,10 @@ export class Search implements OnInit {
       this.favouriteService.toggleUrlInFavourites(this.dogImageUrl);
     }
   }
-  
-  get isFavourite(){
-    return this.dogImageUrl ? this.favouriteService.isFavourite(this.dogImageUrl) : false;
-  }
 
-  addImage(){
-    this.favouriteService.addUrl(this.dogImageUrl)
-  }
+  // addImage(){
+  //   this.favouriteService.addUrl(this.dogImageUrl)
+  // }
 
   handleRandomButtonClick(): void {
     this.getDogImage();
