@@ -5,7 +5,7 @@ import { StorageService } from './storage-service';
   providedIn: 'root',
 })
 export class FavouriteService {
-  private favouriteUrls: string[] = [];
+  private favouriteUrls: Set<string> = new Set<string>();
   private currentUrl: string | null = null;
   
   private favouriteUrlsLocalStorage: string = "dogs"
@@ -20,7 +20,7 @@ export class FavouriteService {
   }
 
   isFavourite(url: string): boolean { 
-    return this.favouriteUrls.includes(url); 
+    return this.favouriteUrls.has(url); 
   }
 
   getUrls(): string[]{
@@ -32,11 +32,13 @@ export class FavouriteService {
   }
 
   toggleUrlInFavouriteUrls(url: string): void {
-    if (this.favouriteUrls.includes(url)) { 
-      this.favouriteUrls = this.favouriteUrls.filter(f => f !== url); } 
+    if (this.favouriteUrls.has(url)) { 
+      this.favouriteUrls.delete(url);
+    }
     else { 
-        this.favouriteUrls.push(url); 
+        this.favouriteUrls.add(url); 
     } 
+    
     this.storageService.setItems(this.favouriteUrlsLocalStorage, this.favouriteUrls)
   }
 }

@@ -3,8 +3,6 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DogResponse } from '../models/dogresponse';
 
-
-
 @Injectable({
   providedIn: 'root',
 })
