@@ -8,7 +8,7 @@ export class FavouriteService {
   private favourites: string[] = [];
   private currentUrl: string | null = null;
   private favouritesLocalStorage: string = "dogs"
-  storageService = inject(StorageService);
+  private storageService = inject(StorageService);
 
   constructor(){
     this.favourites = this.storageService.loadItem(this.favouritesLocalStorage);
