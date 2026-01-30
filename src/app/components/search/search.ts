@@ -11,7 +11,7 @@ import { FavouriteService } from '../../services/favourite-service';
 })
 
 export class Search implements OnInit {
-  private dogImageUrl: string = "";
+  dogImageUrl: string = "";
   private dogImageSuccess: boolean = false;
   private favouriteService = inject(FavouriteService);
   private dogService = inject(DogService);
@@ -25,7 +25,6 @@ export class Search implements OnInit {
   
   getDogImage(): void {
     this.dogService.getDog().subscribe(response =>{
-      console.log(response);
 
       this.dogImageUrl = response.message;
       this.dogImageSuccess = response.status === 'success';

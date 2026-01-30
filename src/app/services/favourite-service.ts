@@ -23,6 +23,11 @@ export class FavouriteService {
     return this.favouriteUrls.has(url); 
   }
 
+  setFavouriteUrls(newUrls: Set<string>): void {
+    this.favouriteUrls = newUrls;
+    this.storageService.setItems(this.favouriteUrlsLocalStorage, this.favouriteUrls)
+  }
+
   getUrls(): string[]{
     return [...this.favouriteUrls];
   }

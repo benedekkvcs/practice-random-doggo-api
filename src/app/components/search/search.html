@@ -2,8 +2,7 @@
     <app-button label="Random dog" (buttonClick)="getDogImage()"></app-button>
     <img class="dog-image" [src]="dogImageUrl"/>
     @if (dogImageSuccess) {
-        <app-button label="{{ this.favouriteService.isFavourite(this.dogImageUrl) ? '★ Remove Favourite' : '☆ Add Favourite' }}" 
-                    (buttonClick)="toggleFavourite()">
+        <app-button label="{{ this.favouriteService.isFavourite(this.dogImageUrl) ? '★ Remove Favourite' : '☆ Add Favourite' }}" (buttonClick)="toggleFavourite()">
         </app-button>
     }
 </div>

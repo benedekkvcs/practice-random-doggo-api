@@ -17,7 +17,35 @@ export class Favourites {
         this.dogUrls = this.favouriteService.getUrls();
     }
 
-    onMoving(dogUrl: string){
-        console.log(dogUrl);
+    onMovingUp(dogUrl: string){
+        const arr = Array.from(this.dogUrls);
+        var idx : number = arr.indexOf(dogUrl);
+    
+        if(idx != 0){
+            var newIndex = idx - 1;
+            [arr[newIndex], arr[idx]] = [arr[idx], arr[newIndex]];
+
+            const set = new Set<string>(arr)
+            this.favouriteService.setFavouriteUrls(set);
+            this.dogUrls= this.favouriteService.getUrls();
+        }
+
+        
+    }
+
+    onMovingDown(dogUrl: string){
+        const arr = Array.from(this.dogUrls);
+        var idx : number = arr.indexOf(dogUrl);
+    
+        if(idx != arr.length-1){
+            var newIndex = idx + 1;
+            [arr[newIndex], arr[idx]] = [arr[idx], arr[newIndex]];
+
+            const set = new Set<string>(arr)
+            this.favouriteService.setFavouriteUrls(set);
+            this.dogUrls= this.favouriteService.getUrls();
+        }
+
+
     }
 }
